@@ -1,30 +1,30 @@
-import { getSummarys } from '../../api/summary'
+import { getSummarys } from '@/api/summary'
 
-export const fetchSummaryRequest = () => {
+export const fetchSummarysRequest = () => {
   return {
-    type: 'FETCH_SUMMARY_REQUEST'
+    type: 'FETCH_SUMMARYS_REQUEST'
   }
 }
 
-export const fetchSummarySuccess = users => {
+export const fetchSummarysSuccess = summarys => {
   return {
-    type: 'FETCH_SUMMARY_SUCCESS',
-    payload: users
+    type: 'FETCH_SUMMARYS_SUCCESS',
+    payload: summarys
   }
 }
 
-export const fetchSummaryFail = () => {
+export const fetchSummarysFail = () => {
   return {
-    type: 'FETCH_SUMMARY_FAILED'
+    type: 'FETCH_SUMMARYS_FAILED'
   }
 }
 
 export const fetchSummarys = () => async dispatch => {
   try {
-    dispatch(fetchSummaryRequest())
+    dispatch(fetchSummarysRequest())
     const { data } = await getSummarys()
-    dispatch(fetchSummarySuccess(data))
+    dispatch(fetchSummarysSuccess(data))
   } catch (error) {
-    dispatch(fetchSummaryFail())
+    dispatch(fetchSummarysFail())
   }
 }

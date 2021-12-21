@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import { SafeAreaView, View, Text, StatusBar, FlatList } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAccounts } from '@/stores/actions/account'
 import styles from './style'
-import { connect, useDispatch } from 'react-redux'
-import { fetchDataAccount } from '../../stores/actions/account'
 
-const Home = ({ navigation, account }) => {
+const Account = ({ navigation }) => {
   const dispatch = useDispatch()
+  const accounts = useSelector(state => state.accountReducer.accounts)
 
   useEffect(() => {
-    dispatch(fetchDataAccount())
+    dispatch(fetchAccounts())
   }, [dispatch])
 
   function ListAccount() {
@@ -16,7 +17,7 @@ const Home = ({ navigation, account }) => {
       <View style={styles.container}>
         <FlatList
           style={styles.list}
-          data={account}
+          data={accounts}
           keyExtractor={item => item.id}
           windowSize={3}
           renderItem={({ item }) => (
@@ -42,10 +43,4 @@ const Home = ({ navigation, account }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    account: state.accountReducer.accounts
-  }
-}
-
-export default connect(mapStateToProps, null)(Home)
+export default Account

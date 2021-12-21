@@ -10,7 +10,7 @@ import {
 import styles from '../Home/style'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Home = ({ navigation }) => {
+const Profile = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={'#99A799'} />
@@ -35,4 +35,4 @@ const Home = ({ navigation }) => {
   )
 }
 
-export default Home
+export default Profile

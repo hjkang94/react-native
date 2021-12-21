@@ -1,6 +1,6 @@
 import React from 'react'
 import { SafeAreaView, View, StatusBar } from 'react-native'
-import { CustomButton } from '../../components'
+import { CustomButton } from '@/components'
 import Icon from 'react-native-vector-icons/Ionicons'
 import styles from './style'
 

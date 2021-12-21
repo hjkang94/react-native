@@ -3,7 +3,7 @@ import { ActivityIndicator, View, Text } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import styles from './style'
 
-const SplashScreen = ({ navigation }) => {
+const Splash = ({ navigation }) => {
   const [animating, setAnimating] = useState(true)
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const SplashScreen = ({ navigation }) => {
   )
 }
 
-export default SplashScreen
+export default Splash

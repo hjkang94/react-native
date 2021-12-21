@@ -1,5 +1,5 @@
 import React from 'react'
-import { Home, Profile, Account, Summary, Login, Web, Splash } from '../screens'
+import { Home, Profile, Account, Summary, Login, Web, Splash } from '@/screens'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'

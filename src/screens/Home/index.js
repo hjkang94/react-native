@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { SafeAreaView, View, StatusBar } from 'react-native'
-import { CustomButton, IconButton } from '../../components'
+import { CustomButton, IconButton } from '@/components'
 import styles from './style'
 import { connect } from 'react-redux'
 import AsyncStorage from '@react-native-community/async-storage'
-import { info, logout } from '../../api/session'
+import { info, logout } from '@/api/session'
 
 const Home = ({ navigation, account }) => {
   useEffect(() => {
