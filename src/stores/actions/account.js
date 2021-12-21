@@ -1,30 +1,30 @@
-import { getAccounts } from '../../api/account'
+import { getAccounts } from '@/api/account'
 
-export const fetchAccountRequest = () => {
+export const fetchAccountsRequest = () => {
   return {
-    type: 'FETCH_ACCOUNT_REQUEST'
+    type: 'FETCH_ACCOUNTS_REQUEST'
   }
 }
 
-export const fetchAccountSuccess = accounts => {
+export const fetchAccountsSuccess = accounts => {
   return {
-    type: 'FETCH_ACCOUNT_SUCCESS',
+    type: 'FETCH_ACCOUNTS_SUCCESS',
     payload: accounts
   }
 }
 
-export const fetchAccountFail = () => {
+export const fetchAccountsFail = () => {
   return {
-    type: 'FETCH_ACCOUNT_FAILED'
+    type: 'FETCH_ACCOUNTS_FAILED'
   }
 }
 
-export const fetchDataAccount = () => async dispatch => {
+export const fetchAccounts = () => async dispatch => {
   try {
-    dispatch(fetchAccountRequest())
+    dispatch(fetchAccountsRequest())
     const { data } = await getAccounts()
-    dispatch(fetchAccountSuccess(data))
+    dispatch(fetchAccountsSuccess(data))
   } catch (error) {
-    dispatch(fetchAccountFail())
+    dispatch(fetchAccountsFail())
   }
 }

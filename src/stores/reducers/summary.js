@@ -6,19 +6,19 @@ const initialState = {
 export const summaryReducer = (state = initialState, action) => {
   const { payload } = action
   switch (action.type) {
-    case 'FETCH_SUMMARY_REQUEST':
+    case 'FETCH_SUMMARYS_REQUEST':
       return {
         ...state,
         isLoading: true
       }
 
-    case 'FETCH_SUMMARY_SUCCESS':
+    case 'FETCH_SUMMARYS_SUCCESS':
       return {
         ...state,
         summarys: payload,
         isLoading: false
       }
-    case 'FETCH_SUMMARY_FAILED':
+    case 'FETCH_SUMMARYS_FAILED':
       return {
         ...state,
         isLoading: false

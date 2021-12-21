@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { SafeAreaView, View, StatusBar } from 'react-native'
 import styles from './style'
-import { login } from '../../api/session'
+import { login } from '@/api/session'
 import { WebView } from 'react-native-webview'
 
 const Web = ({ navigation }) => {

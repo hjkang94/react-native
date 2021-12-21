@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { SafeAreaView, View, Text, StatusBar, FlatList } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchSummarys } from '@/stores/actions/summary'
 import styles from './style'
-import Icon from 'react-native-vector-icons/Ionicons'
-import { connect, useDispatch } from 'react-redux'
-import { fetchSummarys } from '../../stores/actions/summary'
 
-const Home = ({ navigation, summarys }) => {
+const Summary = ({ navigation }) => {
   const dispatch = useDispatch()
+  const summarys = useSelector(state => state.summaryReducer.summarys)
 
   useEffect(() => {
     dispatch(fetchSummarys())
@@ -43,10 +43,4 @@ const Home = ({ navigation, summarys }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    summarys: state.summaryReducer.summarys
-  }
-}
-
-export default connect(mapStateToProps, null)(Home)
+export default Summary
