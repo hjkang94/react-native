@@ -1,9 +1,8 @@
 import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
-import { View } from 'react-native'
 import { CustomButton } from '@/components'
 import { logout } from '@/api/session'
-import styles from './style'
+import { Container } from './style'
 
 const Profile = ({ navigation }) => {
   const handleLogout = () => {
@@ -13,9 +12,9 @@ const Profile = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.outerWrapper}>
+    <Container>
       <CustomButton title={'로그아웃'} onPress={() => handleLogout()} />
-    </View>
+    </Container>
   )
 }
 

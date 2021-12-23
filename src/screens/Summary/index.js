@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import { CustomModal } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSummarys } from '@/stores/actions/summary'
-import styles from './style'
+import {
+  FlatList,
+  ListItem,
+  Text,
+  SubText,
+  DetailContainer,
+  DetailText,
+  DetailSubText
+} from './style'
 
 const modalData = item => {
   return [
@@ -48,19 +56,16 @@ const Summary = ({ navigation }) => {
   const List = () => {
     return (
       <FlatList
-        style={styles.list}
         data={summarys}
         keyExtractor={(item, i) => i}
         windowSize={3}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.listItem}
-            onPress={() => handleClick(item)}>
-            <View style={styles.metaInfo}>
-              <Text style={styles.text}>{item.project_name}</Text>
-              <Text style={styles.subText}>{item.account_id}</Text>
+          <ListItem onPress={() => handleClick(item)}>
+            <View>
+              <Text>{item.project_name}</Text>
+              <SubText>{item.account_id}</SubText>
             </View>
-          </TouchableOpacity>
+          </ListItem>
         )}
       />
     )
@@ -69,10 +74,10 @@ const Summary = ({ navigation }) => {
   const contents = []
   for (const item of modalData(detail)) {
     contents.push(
-      <View style={styles.detailContainer} key={item.name}>
-        <Text style={styles.detailTitle}>{item.name}</Text>
-        <Text style={styles.detailText}>{item.value}</Text>
-      </View>
+      <DetailContainer key={item.name}>
+        <DetailText>{item.name}</DetailText>
+        <DetailSubText>{item.value}</DetailSubText>
+      </DetailContainer>
     )
   }
 
@@ -83,9 +88,7 @@ const Summary = ({ navigation }) => {
         setVisible={setVisible}
         body={<>{contents}</>}
       />
-      <View style={styles.outerWrapper}>
-        <List />
-      </View>
+      <List />
     </>
   )
 }

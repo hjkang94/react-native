@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
-import { ActivityIndicator, View, Text } from 'react-native'
-import styles from './style'
+import { Container, ActivityIndicator, Title } from './style'
 
 const Splash = ({ navigation }) => {
   const [animating, setAnimating] = useState(true)
@@ -21,15 +20,10 @@ const Splash = ({ navigation }) => {
   }, [navigation])
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>HJKANG TEST APP</Text>
-      <ActivityIndicator
-        animating={animating}
-        color="white"
-        size="large"
-        style={styles.activityIndicator}
-      />
-    </View>
+    <Container>
+      <Title>HJKANG TEST APP</Title>
+      <ActivityIndicator animating={animating} color="white" size="large" />
+    </Container>
   )
 }
 

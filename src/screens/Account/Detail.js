@@ -1,37 +1,41 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import styles from './style'
+import {
+  DetailContainer,
+  DetailContent,
+  DetailText,
+  DetailSubText
+} from './style'
 
 const Detail = ({ route }) => {
   const item = route.params
 
   return (
-    <View style={styles.container}>
-      <View style={styles.detailContainer}>
-        <Text style={styles.detailTitle}>ID</Text>
-        <Text style={styles.detailText}>{item.id}</Text>
-      </View>
-      <View style={styles.detailContainer}>
-        <Text style={styles.detailTitle}>Name</Text>
-        <Text style={styles.detailText}>{item.name}</Text>
-      </View>
-      <View style={styles.detailContainer}>
-        <Text style={styles.detailTitle}>Desc</Text>
-        <Text style={styles.detailText}>{item.description}</Text>
-      </View>
-      <View style={styles.detailContainer}>
-        <Text style={styles.detailTitle}>Active</Text>
-        <Text style={styles.detailText}>{item.active}</Text>
-      </View>
-      <View style={styles.detailContainer}>
-        <Text style={styles.detailTitle}>CreatedAt</Text>
-        <Text style={styles.detailText}>{item.created_at}</Text>
-      </View>
-      <View style={styles.detailContainer}>
-        <Text style={styles.detailTitle}>UreatedAt</Text>
-        <Text style={styles.detailText}>{item.updated_at}</Text>
-      </View>
-    </View>
+    <DetailContainer>
+      <DetailContent>
+        <DetailText>ID</DetailText>
+        <DetailSubText>{item.id}</DetailSubText>
+      </DetailContent>
+      <DetailContent>
+        <DetailText>Name</DetailText>
+        <DetailSubText>{item.name}</DetailSubText>
+      </DetailContent>
+      <DetailContent>
+        <DetailText>Desc</DetailText>
+        <DetailSubText>{item.description}</DetailSubText>
+      </DetailContent>
+      <DetailContent>
+        <DetailText>Active</DetailText>
+        <DetailSubText>{item.active}</DetailSubText>
+      </DetailContent>
+      <DetailContent>
+        <DetailText>CreatedAt</DetailText>
+        <DetailSubText>{item.created_at}</DetailSubText>
+      </DetailContent>
+      <DetailContent>
+        <DetailText>UreatedAt</DetailText>
+        <DetailSubText>{item.updated_at}</DetailSubText>
+      </DetailContent>
+    </DetailContainer>
   )
 }
 
