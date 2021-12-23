@@ -1,37 +1,21 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  Alert
-} from 'react-native'
-import styles from '../Home/style'
-import Icon from 'react-native-vector-icons/Ionicons'
+import AsyncStorage from '@react-native-community/async-storage'
+import { View } from 'react-native'
+import { CustomButton } from '@/components'
+import { logout } from '@/api/session'
+import styles from './style'
 
 const Profile = ({ navigation }) => {
+  const handleLogout = () => {
+    logout()
+    AsyncStorage.removeItem('user')
+    navigation.navigate('Auth')
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={'#99A799'} />
-      <View style={styles.outerWrapper}>
-        <Icon name={'ios-settings'} size={100} color={'green'} />
-        <View>
-          <TouchableOpacity
-            onPress={() => Alert.alert('this is Profile Screen')}
-            style={styles.buttonStyle}>
-            <Text style={styles.text}>
-              this is{' '}
-              <Text style={{ fontWeight: 'bold', color: 'green' }}>
-                {' '}
-                PROFILE{' '}
-              </Text>{' '}
-              screen
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </SafeAreaView>
+    <View style={styles.outerWrapper}>
+      <CustomButton title={'로그아웃'} onPress={() => handleLogout()} />
+    </View>
   )
 }
 

@@ -5,3 +5,5 @@ export Profile from './Profile'
 export Splash from './Splash'
 export Summary from './Summary'
 export Web from './Web'
+
+export AccountDetail from './Account/Detail'

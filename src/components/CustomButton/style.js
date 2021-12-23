@@ -1,14 +1,17 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components'
 
-export default StyleSheet.create({
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10
-  },
-  text: {
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25
-  }
-})
+export const Button = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: ${props => props.buttonColor};
+  width: ${props => props.width};
+  height: ${props => props.height};
+`
+
+export const ButtonText = styled.Text`
+  line-height: 21px;
+  font-weight: bold;
+  letter-spacing: 0.25px;
+  color: ${props => props.color};
+`
