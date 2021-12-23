@@ -1,9 +1,7 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components'
 
-export default StyleSheet.create({
-  outerWrapper: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+export const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`

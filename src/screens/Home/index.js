@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
-import { View, Alert } from 'react-native'
+import { Alert } from 'react-native'
 import { IconButton } from '@/components'
 import { info } from '@/api/session'
-import styles from './style'
+import { Container, Wrapper } from './style'
 
 const Home = ({ navigation, account }) => {
   useEffect(() => {
@@ -15,8 +15,8 @@ const Home = ({ navigation, account }) => {
   })
 
   return (
-    <View style={styles.outerWrapper}>
-      <View style={styles.wrapper}>
+    <Container>
+      <Wrapper>
         <IconButton
           title={'계정'}
           icon={'md-person-circle'}
@@ -28,18 +28,18 @@ const Home = ({ navigation, account }) => {
           onPress={() => navigation.navigate('Summary')}
         />
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
-      </View>
-      <View style={styles.wrapper}>
+      </Wrapper>
+      <Wrapper>
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
-      </View>
-      <View style={styles.wrapper}>
+      </Wrapper>
+      <Wrapper>
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
-      </View>
-    </View>
+      </Wrapper>
+    </Container>
   )
 }
 

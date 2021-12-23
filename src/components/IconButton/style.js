@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.TouchableOpacity`
+export const Button = styled.Pressable`
   justify-content: center;
   align-items: center;
   margin: 8px;

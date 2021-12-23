@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAccounts } from '@/stores/actions/account'
-import styles from './style'
+import { FlatList, ListItem, Text, SubText } from './style'
 
 const Account = ({ navigation }) => {
   const dispatch = useDispatch()
@@ -15,31 +15,22 @@ const Account = ({ navigation }) => {
   const List = () => {
     return (
       <FlatList
-        style={styles.list}
         data={accounts}
         keyExtractor={item => item.id}
         windowSize={3}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.listItem}
-            onPress={() => navigation.navigate('AccountDetail', item)}>
-            <View style={styles.metaInfo}>
-              <Text style={styles.text}>{item.name}</Text>
-              <Text style={styles.subText}>{item.id}</Text>
+          <ListItem onPress={() => navigation.navigate('AccountDetail', item)}>
+            <View>
+              <Text>{item.name}</Text>
+              <SubText>{item.id}</SubText>
             </View>
-          </TouchableOpacity>
+          </ListItem>
         )}
       />
     )
   }
 
-  return (
-    <>
-      <View style={styles.outerWrapper}>
-        <List />
-      </View>
-    </>
-  )
+  return <List />
 }
 
 export default Account

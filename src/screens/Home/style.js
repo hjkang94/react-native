@@ -1,12 +1,11 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components'
 
-export default StyleSheet.create({
-  outerWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  wrapper: {
-    flexDirection: 'row'
-  }
-})
+export const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Wrapper = styled.View`
+  flex-direction: row;
+`
