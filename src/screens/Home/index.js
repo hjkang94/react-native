@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import { SafeAreaView, View, StatusBar } from 'react-native'
-import { CustomButton, IconButton } from '@/components'
-import styles from './style'
-import { connect } from 'react-redux'
 import AsyncStorage from '@react-native-community/async-storage'
-import { info, logout } from '@/api/session'
+import { View, Alert } from 'react-native'
+import { IconButton } from '@/components'
+import { info } from '@/api/session'
+import styles from './style'
 
 const Home = ({ navigation, account }) => {
   useEffect(() => {
@@ -15,36 +14,33 @@ const Home = ({ navigation, account }) => {
     fetchData()
   })
 
-  const logoutBtn = async () => {
-    logout()
-    AsyncStorage.removeItem('user')
-    navigation.navigate('Splash')
-  }
-
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={'#99A799'} />
-      <View style={styles.outerWrapper}>
-        <View>
-          <CustomButton title={'로그아웃'} onPress={() => logoutBtn()} />
-        </View>
-        <View>
-          <IconButton
-            title={'계정'}
-            icon={'md-person-circle'}
-            onPress={() => navigation.navigate('Account')}
-          />
-        </View>
-        <View>
-          <IconButton
-            title={'계정요약'}
-            icon={'information-circle-sharp'}
-            onPress={() => navigation.navigate('Summary')}
-          />
-        </View>
+    <View style={styles.outerWrapper}>
+      <View style={styles.wrapper}>
+        <IconButton
+          title={'계정'}
+          icon={'md-person-circle'}
+          onPress={() => navigation.navigate('Account')}
+        />
+        <IconButton
+          title={'계정요약'}
+          icon={'information-circle-sharp'}
+          onPress={() => navigation.navigate('Summary')}
+        />
+        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
       </View>
-    </SafeAreaView>
+      <View style={styles.wrapper}>
+        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
+        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
+        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
+      </View>
+      <View style={styles.wrapper}>
+        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
+        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
+        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
+      </View>
+    </View>
   )
 }
 
-export default connect(null, null)(Home)
+export default Home

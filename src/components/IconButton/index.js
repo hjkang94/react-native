@@ -1,42 +1,41 @@
-import React, { Component } from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import React from 'react'
+import { Button, ButtonText } from './style'
 import Icon from 'react-native-vector-icons/Ionicons'
-import styles from './style'
+import { Color } from '@/assets/css'
 
-export default class IconButton extends Component {
-  static defaultProps = {
-    title: 'untitled',
-    icon: 'alert-circle',
-    borderColor: '#1687A7',
-    backColor: '#FFF',
-    titleColor: '#1687A7',
-    width: 100,
-    height: 100,
-    onPress: () => null
-  }
-
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <TouchableOpacity
-        style={[
-          styles.button,
-          {
-            borderColor: this.props.borderColor,
-            backgroundColor: this.props.backColor,
-            width: this.props.width,
-            height: this.props.height
-          }
-        ]}
-        onPress={this.props.onPress}>
-        <Icon name={this.props.icon} size={30} color={this.props.borderColor} />
-        <Text style={[styles.text, { color: this.props.titleColor }]}>
-          {this.props.title}
-        </Text>
-      </TouchableOpacity>
-    )
-  }
+const IconButton = props => {
+  const {
+    borderColor,
+    buttonColor,
+    width,
+    height,
+    onPress,
+    icon,
+    titleColor,
+    title
+  } = props
+  return (
+    <Button
+      borderColor={borderColor}
+      buttonColor={buttonColor}
+      width={width}
+      height={height}
+      onPress={onPress}>
+      <Icon name={icon} size={30} color={borderColor} />
+      <ButtonText color={titleColor}>{title}</ButtonText>
+    </Button>
+  )
 }
+
+IconButton.defaultProps = {
+  title: 'untitled',
+  icon: 'alert-circle',
+  buttonColor: '#FFF',
+  borderColor: Color.primary,
+  titleColor: Color.primary,
+  width: '100px',
+  height: '100px',
+  onPress: () => null
+}
+
+export default IconButton

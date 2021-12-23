@@ -1,11 +1,7 @@
 import { StyleSheet } from 'react-native'
+import { Color } from '@/assets/css'
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F6F5F5',
-    flexDirection: 'column'
-  },
   logo: {
     width: 128,
     height: 56
@@ -24,7 +20,7 @@ export default StyleSheet.create({
     marginBottom: '40%'
   },
   icon: {
-    color: '#1687A7',
+    color: Color.primary,
     marginLeft: 10
   }
 })

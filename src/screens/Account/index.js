@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { SafeAreaView, View, Text, StatusBar, FlatList } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAccounts } from '@/stores/actions/account'
 import styles from './style'
@@ -12,34 +12,33 @@ const Account = ({ navigation }) => {
     dispatch(fetchAccounts())
   }, [dispatch])
 
-  function ListAccount() {
+  const List = () => {
     return (
-      <View style={styles.container}>
-        <FlatList
-          style={styles.list}
-          data={accounts}
-          keyExtractor={item => item.id}
-          windowSize={3}
-          renderItem={({ item }) => (
-            <View style={styles.listItem}>
-              <View style={styles.metaInfo}>
-                <Text style={styles.text}>{item.name}</Text>
-                <Text style={styles.subText}>{item.id}</Text>
-              </View>
+      <FlatList
+        style={styles.list}
+        data={accounts}
+        keyExtractor={item => item.id}
+        windowSize={3}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.listItem}
+            onPress={() => navigation.navigate('AccountDetail', item)}>
+            <View style={styles.metaInfo}>
+              <Text style={styles.text}>{item.name}</Text>
+              <Text style={styles.subText}>{item.id}</Text>
             </View>
-          )}
-        />
-      </View>
+          </TouchableOpacity>
+        )}
+      />
     )
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={'#99A799'} />
+    <>
       <View style={styles.outerWrapper}>
-        <ListAccount />
+        <List />
       </View>
-    </SafeAreaView>
+    </>
   )
 }
 

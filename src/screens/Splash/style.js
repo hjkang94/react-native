@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native'
+import { Color } from '@/assets/css'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1687A7'
+    backgroundColor: Color.secondary
   },
   activityIndicator: {
     alignItems: 'center',
