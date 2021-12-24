@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { View } from 'react-native'
 import { CustomModal, SearchBar } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchSummarys } from '@/stores/actions/summary'
+import { fetchProjects } from '@/stores/actions/project'
 import {
   FlatList,
   ListItem,
-  Container,
   Text,
   SubText,
   DetailContainer,
@@ -17,37 +16,41 @@ import {
 const header = item => {
   return [
     {
-      name: 'Project ID',
-      value: item.project_id
+      name: 'ID',
+      value: item.id
     },
     {
-      name: 'Project Name',
-      value: item.project_name
+      name: 'Name',
+      value: item.name
     },
     {
-      name: 'Cost',
-      value: `${item.currency === 'KRW' ? '₩' : '$'} ${item.cost}`
+      name: 'Account ID',
+      value: item.account_id
     },
     {
-      name: 'Cost Type',
-      value: item.cost_type
+      name: 'Number',
+      value: item.number
     },
     {
-      name: 'Country',
-      value: `${item.country}(${item.country_name})`
+      name: 'Created At',
+      value: item.created_at
+    },
+    {
+      name: 'Updated At',
+      value: item.updated_at
     }
   ]
 }
 
-const Summary = ({ navigation }) => {
+const Project = ({ navigation }) => {
   const dispatch = useDispatch()
-  const summarys = useSelector(state => state.summaryReducer.summarys)
+  const projects = useSelector(state => state.projectReducer.projects)
   const [visible, setVisible] = useState(false)
   const [detail, setDetail] = useState({})
   const [inputText, setInputText] = useState('')
 
   useEffect(() => {
-    dispatch(fetchSummarys())
+    dispatch(fetchProjects())
   }, [dispatch])
 
   const handleClick = item => {
@@ -55,11 +58,12 @@ const Summary = ({ navigation }) => {
     setDetail(item)
   }
 
-  let filtered = summarys
+  let filtered = projects
   if (inputText) {
-    filtered = summarys.filter(
+    filtered = projects.filter(
       item =>
-        item.project_name.toLowerCase().includes(inputText.toLowerCase()) ||
+        item.id.toLowerCase().includes(inputText.toLowerCase()) ||
+        item.name.toLowerCase().includes(inputText.toLowerCase()) ||
         item.account_id.toLowerCase().includes(inputText.toLowerCase())
     )
   }
@@ -73,22 +77,10 @@ const Summary = ({ navigation }) => {
         renderItem={({ item }) => (
           <ListItem onPress={() => handleClick(item)}>
             <View>
-              <Container>
-                <Text>Project</Text>
-                <SubText>
-                  {item.project_name} ({item.project_id})
-                </SubText>
-              </Container>
-              <Container>
-                <Text>Cost</Text>
-                <SubText>
-                  {item.currency === 'KRW' ? '₩' : '$'} {item.cost}
-                </SubText>
-              </Container>
-              <Container>
-                <Text>Country</Text>
-                <SubText>{item.country_name}</SubText>
-              </Container>
+              <Text>
+                {item.name}({item.id})
+              </Text>
+              <SubText>{item.account_id}</SubText>
             </View>
           </ListItem>
         )}
@@ -116,4 +108,4 @@ const Summary = ({ navigation }) => {
   )
 }
 
-export default Summary
+export default Project

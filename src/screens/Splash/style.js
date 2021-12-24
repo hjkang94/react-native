@@ -5,7 +5,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: ${Color.secondary};
+  background-color: ${Color.primary};
 `
 
 export const ActivityIndicator = styled.ActivityIndicator`

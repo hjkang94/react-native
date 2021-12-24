@@ -5,7 +5,9 @@ export const ModalContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 `
+
 export const ModalContent = styled.View`
   background-color: white
   padding: 35px;
@@ -14,6 +16,7 @@ export const ModalContent = styled.View`
   border-width: 0.5px;
   border-color: ${Color.lightGray};
 `
+
 const button = `
   padding: 10px;
   elevation: 2;
