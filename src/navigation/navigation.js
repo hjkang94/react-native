@@ -7,7 +7,8 @@ import {
   Summary,
   Login,
   Web,
-  Splash
+  Splash,
+  Project
 } from '@/screens'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -59,7 +60,7 @@ function Tabs() {
             <Icon
               name={getIconName(name)}
               size={20}
-              color={focused ? Color.danger : '#808080'}
+              color={focused ? Color.secondary : '#808080'}
             />
           )
         },
@@ -68,7 +69,7 @@ function Tabs() {
             <Text
               style={{
                 fontSize: 12,
-                color: focused ? Color.danger : '#808080'
+                color: focused ? Color.secondary : '#808080'
               }}>
               {params.route.name}
             </Text>
@@ -101,9 +102,9 @@ const MainNavigation = () => {
           headerShown: false,
           headerBackTitle: '뒤로',
           headerStyle: {
-            backgroundColor: Color.babyPink
+            backgroundColor: Color.lightPrimary
           },
-          headerTintColor: Color.primary
+          headerTintColor: Color.secondary
         }}
         initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splash} />
@@ -125,6 +126,14 @@ const MainNavigation = () => {
             headerShown: true
           }}
           component={Summary}
+        />
+        <Stack.Screen
+          name="Project"
+          options={{
+            title: '프로젝트',
+            headerShown: true
+          }}
+          component={Project}
         />
         <Stack.Screen
           name="AccountDetail"

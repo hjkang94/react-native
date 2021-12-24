@@ -1,3 +1,4 @@
 export CustomButton from './CustomButton'
 export IconButton from './IconButton'
-export CustomModal from './Modal'
+export CustomModal from './CustomModal'
+export SearchBar from './SearchBar'

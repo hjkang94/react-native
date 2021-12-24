@@ -14,6 +14,7 @@ const IconButton = props => {
     titleColor,
     title
   } = props
+
   return (
     <Button
       borderColor={borderColor}

@@ -11,6 +11,16 @@ export const ListItem = styled.Pressable`
   border-bottom-color: ${Color.lightGray};
 `
 
+export const Text = styled.Text`
+  font-size: 15px;
+`
+
+export const SubText = styled.Text`
+  margin-top: 5px;
+  font-size: 12px;
+  color: ${Color.subText};
+`
+
 export const DetailContainer = styled.View`
   flex-direction: row;
   height: 40px;
@@ -28,22 +38,5 @@ export const DetailText = styled.Text`
 export const DetailSubText = styled.Text`
   font-size: 13px;
   width: 60%;
-  margin-left: 20px;
-`
-
-export const Container = styled.View`
-  flex-direction: row;
-  height: 25px;
-`
-
-export const Text = styled.Text`
-  font-size: 13px;
-  width: 20%;
-  color: ${Color.subText};
-`
-
-export const SubText = styled.Text`
-  font-size: 13px;
-  width: 80%;
   margin-left: 20px;
 `

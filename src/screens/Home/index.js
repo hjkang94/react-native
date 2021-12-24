@@ -27,7 +27,11 @@ const Home = ({ navigation, account }) => {
           icon={'information-circle-sharp'}
           onPress={() => navigation.navigate('Summary')}
         />
-        <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />
+        <IconButton
+          title={'프로젝트'}
+          icon={'information-circle-sharp'}
+          onPress={() => navigation.navigate('Project')}
+        />
       </Wrapper>
       <Wrapper>
         <IconButton onPress={() => Alert.alert('메뉴를 추가해주세요')} />

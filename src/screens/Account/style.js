@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Color } from '@/assets/css'
 
 export const FlatList = styled.FlatList`
-  margin: 10px;
+  margin: 0px 10px 10px 10px;
 `
 
 export const ListItem = styled.Pressable`

@@ -7,6 +7,7 @@ export const Button = styled.Pressable`
   background-color: ${props => props.buttonColor};
   width: ${props => props.width};
   height: ${props => props.height};
+  border-radius: 5px;
 `
 
 export const ButtonText = styled.Text`
