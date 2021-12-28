@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import { Color } from '@/assets/css'
 
 export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: ${Color.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 `
 
 export const ActivityIndicator = styled.ActivityIndicator`
@@ -16,5 +15,5 @@ export const ActivityIndicator = styled.ActivityIndicator`
 export const Title = styled.Text`
   color: #FFF
   font-weight: bold;
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fonts.size.lg};
 `

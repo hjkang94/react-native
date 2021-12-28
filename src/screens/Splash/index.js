@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useDispatch } from 'react-redux'
-import { fetchUserInfo } from '@/stores/actions/userInfo'
 import { Container, ActivityIndicator, Title } from './style'
 
 const Splash = ({ navigation }) => {
@@ -12,11 +11,10 @@ const Splash = ({ navigation }) => {
     setTimeout(() => {
       setAnimating(false)
       AsyncStorage.getItem('user').then(res => {
-        const value = JSON.parse(res)
-        if (!value || (value && value.errorCode)) {
+        const userInfo = JSON.parse(res)
+        if (!userInfo || (userInfo && userInfo.errorCode)) {
           navigation.replace('Auth')
         } else {
-          dispatch(fetchUserInfo(value))
           navigation.replace('HomeBase')
         }
       })

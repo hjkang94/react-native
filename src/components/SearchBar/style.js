@@ -6,8 +6,8 @@ export const Container = styled.View`
 
 export const TextInput = styled.TextInput`
   height: 35px;
-  padding-left: 10px;
-  border: 0.5px solid lightgray;
-  font-size: 15px;
-  background-color: white;
+  padding-left: ${({ theme }) => theme.paddings.base};
+  border: 0.5px solid #939393;
+  font-size: ${({ theme }) => theme.fonts.size.base};
+  color: ${({ theme }) => theme.colors.text};
 `

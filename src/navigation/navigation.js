@@ -10,12 +10,11 @@ import {
   Splash,
   Project
 } from '@/screens'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Text } from 'react-native'
-import { Color } from '@/assets/css'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -48,19 +47,22 @@ function getIconName(name) {
   return iconName
 }
 
-function Tabs() {
+const Tabs = props => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={params => ({
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: props.theme.colors.lightPrimary
+        },
         tabBarIcon: ({ focused, color, size }) => {
           const name = params.route.name
           return (
             <Icon
               name={getIconName(name)}
               size={20}
-              color={focused ? Color.secondary : '#808080'}
+              color={focused ? props.theme.colors.secondary : '#808080'}
             />
           )
         },
@@ -69,7 +71,7 @@ function Tabs() {
             <Text
               style={{
                 fontSize: 12,
-                color: focused ? Color.secondary : '#808080'
+                color: focused ? props.theme.colors.secondary : '#808080'
               }}>
               {params.route.name}
             </Text>
@@ -77,7 +79,9 @@ function Tabs() {
         }
       })}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile">
+        {subProps => <Profile switchTheme={props.switchTheme} {...subProps} />}
+      </Tab.Screen>
     </Tab.Navigator>
   )
 }
@@ -94,23 +98,38 @@ const Auth = () => {
   )
 }
 
-const MainNavigation = () => {
+const MainNavigation = props => {
+  const theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: props.theme.colors.background
+    }
+  }
   return (
-    <NavigationContainer linking={linking}>
+    <NavigationContainer linking={linking} theme={theme}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
           headerBackTitle: '뒤로',
           headerStyle: {
-            backgroundColor: Color.lightPrimary
+            backgroundColor: props.theme.colors.lightPrimary
           },
-          headerTintColor: Color.secondary
+          headerTintColor: props.theme.colors.secondary
         }}
         initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="Web" component={Web} />
-        <Stack.Screen name="HomeBase" component={Tabs} />
+        <Stack.Screen name="HomeBase">
+          {subProps => (
+            <Tabs
+              switchTheme={props.switchTheme}
+              theme={props.theme}
+              {...subProps}
+            />
+          )}
+        </Stack.Screen>
         <Stack.Screen
           name="Account"
           options={{

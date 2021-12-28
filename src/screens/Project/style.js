@@ -1,42 +1,43 @@
 import styled from 'styled-components'
-import { Color } from '@/assets/css'
 
 export const FlatList = styled.FlatList`
   margin: 0px 10px 10px 10px;
 `
 
 export const ListItem = styled.Pressable`
-  padding: 10px;
+  padding: ${({ theme }) => theme.paddings.base};
   border-bottom-width: 0.5px;
-  border-bottom-color: ${Color.lightGray};
+  border-bottom-color: ${({ theme }) => theme.colors.lightGray};
 `
 
 export const Text = styled.Text`
-  font-size: 15px;
+  font-size: ${({ theme }) => theme.fonts.size.base};
+  color: ${({ theme }) => theme.colors.text};
 `
 
 export const SubText = styled.Text`
-  margin-top: 5px;
-  font-size: 12px;
-  color: ${Color.subText};
+  margin-top: ${({ theme }) => theme.margins.sm};
+  font-size: ${({ theme }) => theme.fonts.size.sm};
+  color: ${({ theme }) => theme.colors.subText};
 `
 
 export const DetailContainer = styled.View`
   flex-direction: row;
   height: 40px;
-  margin: 10px;
+  margin: ${({ theme }) => theme.margins.base};
   border-bottom-width: 0.5px;
-  border-bottom-color: ${Color.lightGray};
+  border-bottom-color: ${({ theme }) => theme.colors.lightGray};
 `
 
 export const DetailText = styled.Text`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fonts.size.sm};
   width: 25%;
-  color: ${Color.subText};
+  color: ${({ theme }) => theme.colors.subText};
 `
 
 export const DetailSubText = styled.Text`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fonts.size.sm};
   width: 60%;
-  margin-left: 20px;
+  margin-left: ${({ theme }) => theme.margins.lg};
+  color: ${({ theme }) => theme.colors.text};
 `

@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
+import { useDispatch } from 'react-redux'
 import { Alert } from 'react-native'
 import { IconButton } from '@/components'
 import { info } from '@/api/session'
+import { fetchUserInfo } from '@/stores/actions/userInfo'
 import { Container, Wrapper } from './style'
 
 const Home = ({ navigation, account }) => {
+  const dispatch = useDispatch()
+
   useEffect(() => {
     async function fetchData() {
       const userInfo = await info({ reload: false })
-      AsyncStorage.setItem('user', JSON.stringify(userInfo))
+      if (!userInfo || (userInfo && userInfo.errorCode)) {
+        navigation.replace('Auth')
+      } else {
+        AsyncStorage.setItem('user', JSON.stringify(userInfo))
+        dispatch(fetchUserInfo(userInfo))
+      }
     }
     fetchData()
   })

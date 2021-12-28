@@ -7,6 +7,7 @@ const SearchBar = props => {
     <Container>
       <TextInput
         placeholder="Search"
+        placeholderTextColor="#939393"
         value={inputText}
         onChangeText={setInputText}
       />

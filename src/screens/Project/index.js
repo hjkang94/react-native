@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { CustomModal, SearchBar } from '@/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects } from '@/stores/actions/project'
+import { dateFormat } from '@/utils/date'
 import {
   FlatList,
   ListItem,
@@ -33,11 +34,11 @@ const header = item => {
     },
     {
       name: 'Created At',
-      value: item.created_at
+      value: dateFormat(item.created_at)
     },
     {
       name: 'Updated At',
-      value: item.updated_at
+      value: dateFormat(item.updated_at)
     }
   ]
 }
