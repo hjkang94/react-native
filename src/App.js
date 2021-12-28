@@ -1,27 +1,28 @@
 import 'react-native-gesture-handler'
-import React from 'react'
+import React, { useState } from 'react'
 import MainNavigation from './navigation/navigation'
 import { Provider } from 'react-redux'
 import { store } from './stores'
-import { StyleSheet, SafeAreaView } from 'react-native'
-import { Color } from '@/assets/css'
+import { darkTheme, lightTheme } from '@/assets/style/theme'
+import { Container } from './style'
+import { ThemeProvider } from 'styled-components'
 
 const App = () => {
+  const [theme, setTheme] = useState(lightTheme)
+  const switchTheme = () => {
+    const nextTheme = theme === lightTheme ? darkTheme : lightTheme
+    setTheme(nextTheme)
+  }
+
   return (
     <Provider store={store}>
-      <SafeAreaView style={styles.container}>
-        <MainNavigation />
-      </SafeAreaView>
+      <ThemeProvider theme={theme}>
+        <Container>
+          <MainNavigation switchTheme={switchTheme} theme={theme} />
+        </Container>
+      </ThemeProvider>
     </Provider>
   )
 }
 
 export default App
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Color.lightPrimary,
-    flexDirection: 'column'
-  }
-})

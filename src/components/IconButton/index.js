@@ -1,7 +1,5 @@
 import React from 'react'
-import { Button, ButtonText } from './style'
-import Icon from 'react-native-vector-icons/Ionicons'
-import { Color } from '@/assets/css'
+import { Button, ButtonText, IconContainer } from './style'
 
 const IconButton = props => {
   const {
@@ -22,18 +20,18 @@ const IconButton = props => {
       width={width}
       height={height}
       onPress={onPress}>
-      <Icon name={icon} size={30} color={borderColor} />
+      <IconContainer name={icon} size={30} borderColor={borderColor} />
       <ButtonText color={titleColor}>{title}</ButtonText>
     </Button>
   )
 }
 
 IconButton.defaultProps = {
-  title: 'untitled',
+  title: 'Untitled',
   icon: 'alert-circle',
-  buttonColor: '#FFF',
-  borderColor: Color.primary,
-  titleColor: Color.primary,
+  borderColor: ({ theme }) => theme.colors.primary,
+  titleColor: ({ theme }) => theme.colors.primary,
+  buttonColor: ({ theme }) => theme.colors.background,
   width: '100px',
   height: '100px',
   onPress: () => null

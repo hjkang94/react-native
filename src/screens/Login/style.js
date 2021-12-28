@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { Color } from '@/assets/css'
 
 export const IconContainer = styled.View`
   align-items: center;
@@ -10,8 +9,8 @@ export const IconContainer = styled.View`
 `
 
 export const IconContent = styled(Icon)`
-  color: ${Color.primary};
-  margin-left: 10px;
+  color: ${({ theme }) => theme.colors.primary};
+  margin-left: ${({ theme }) => theme.margins.base};
 `
 
 export const Container = styled.View`

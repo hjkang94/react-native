@@ -3,11 +3,11 @@ import styled from 'styled-components'
 export const Button = styled.Pressable`
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: ${({ theme }) => theme.margins.sm};
   background-color: ${props => props.buttonColor};
   width: ${props => props.width};
   height: ${props => props.height};
-  border-radius: 5px;
+  border-radius: 3px;
 `
 
 export const ButtonText = styled.Text`

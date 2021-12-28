@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, ButtonText } from './style'
-import { Color } from '@/assets/css'
 
 const CustomButton = props => {
   const { buttonColor, width, height, onPress, titleColor, title } = props
@@ -17,7 +16,7 @@ const CustomButton = props => {
 
 CustomButton.defaultProps = {
   title: 'untitled',
-  buttonColor: Color.primary,
+  buttonColor: ({ theme }) => theme.colors.primary,
   titleColor: '#fff',
   width: '100px',
   height: '60px',

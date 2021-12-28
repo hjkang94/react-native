@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Color } from '@/assets/css'
 
 export const ModalContainer = styled.View`
   flex: 1;
@@ -8,13 +7,21 @@ export const ModalContainer = styled.View`
   background-color: rgba(0, 0, 0, 0.5);
 `
 
+export const ModalTitle = styled.View`
+  padding-bottom: ${({ theme }) => theme.paddings.xl};
+`
+
+export const ModalTitleText = styled.Text`
+  color: ${({ theme }) => theme.colors.secondary};
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fonts.size.base};
+`
+
 export const ModalContent = styled.View`
-  background-color: white
-  padding: 35px;
+  background-color: ${({ theme }) => theme.colors.background};
+  padding: ${({ theme }) => theme.paddings.xl};
   align-items: center;
   elevation: 5;
-  border-width: 0.5px;
-  border-color: ${Color.lightGray};
 `
 
 const button = `
@@ -25,12 +32,12 @@ const button = `
 
 export const Button = styled.Pressable`
   ${button}
-  margin-top: 20px;
-  background-color: ${Color.danger};
+  margin-top: ${({ theme }) => theme.margins.lg};
+  background-color: ${({ theme }) => theme.colors.danger};
 `
 
 export const ButtonText = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
   text-align: center;
 `

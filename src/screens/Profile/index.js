@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
-import { CustomButton } from '@/components'
+import { CustomButton, CircularImage } from '@/components'
 import { useSelector } from 'react-redux'
 import { logout } from '@/api/session'
+import { dateFormat } from '@/utils/date'
 import {
   Container,
-  LogoutContainer,
+  ButtonContainer,
   ProfileContainer,
   Content,
   Text,
-  SubText,
-  IconContent
+  SubText
 } from './style'
-import { Color } from '@/assets/css'
+import { ThemeContext } from 'styled-components'
 
-const Profile = ({ navigation }) => {
+const Profile = ({ navigation, switchTheme }) => {
   const userInfo = useSelector(store => store.userInfoReducer.userInfo)
+  const themeContext = useContext(ThemeContext)
+
   const handleLogout = () => {
     logout()
     AsyncStorage.removeItem('user')
@@ -28,16 +30,23 @@ const Profile = ({ navigation }) => {
 
   return (
     <Container>
-      <LogoutContainer>
+      <ButtonContainer>
+        <CustomButton
+          title={'테마변경'}
+          onPress={() => switchTheme()}
+          height={'40px'}
+          width={'80px'}
+          buttonColor={themeContext.colors.secondary}
+        />
         <CustomButton
           title={'로그아웃'}
           onPress={() => handleLogout()}
           height={'40px'}
           width={'80px'}
-          buttonColor={Color.danger}
+          buttonColor={themeContext.colors.danger}
         />
-      </LogoutContainer>
-      <IconContent name={'happy-outline'} size={150} />
+      </ButtonContainer>
+      <CircularImage src={require('@/assets/image/ja.jpeg')} size={200} />
       <ProfileContainer>
         <Content>
           <Text>Name</Text>
@@ -57,11 +66,11 @@ const Profile = ({ navigation }) => {
         </Content>
         <Content>
           <Text>Loggined At</Text>
-          <SubText>{userInfo.loggedin_at}</SubText>
+          <SubText>{dateFormat(userInfo.loggedin_at)}</SubText>
         </Content>
         <Content>
           <Text>Created At</Text>
-          <SubText>{userInfo.created_at}</SubText>
+          <SubText>{dateFormat(userInfo.created_at)}</SubText>
         </Content>
       </ProfileContainer>
     </Container>

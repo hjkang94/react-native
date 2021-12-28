@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAccounts } from '@/stores/actions/account'
 import { SearchBar } from '@/components'
+import { dateFormat } from '@/utils/date'
 import { FlatList, ListItem, Text, SubText } from './style'
 
 const header = item => {
@@ -25,11 +26,11 @@ const header = item => {
     },
     {
       name: 'Created At',
-      value: item.created_at
+      value: dateFormat(item.created_at)
     },
     {
       name: 'Updated At',
-      value: item.updated_at
+      value: dateFormat(item.updated_at)
     }
   ]
 }
