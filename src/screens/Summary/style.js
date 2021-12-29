@@ -6,6 +6,7 @@ export const FlatList = styled.FlatList`
 
 export const ListItem = styled.Pressable`
   padding: ${({ theme }) => theme.paddings.base};
+  margin-top: ${({ theme }) => theme.margins.sm};
   border-bottom-width: 0.5px;
   border-bottom-color: ${({ theme }) => theme.colors.lightGray};
 `

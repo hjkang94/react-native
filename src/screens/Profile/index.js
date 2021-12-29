@@ -4,6 +4,7 @@ import { CustomButton, CircularImage } from '@/components'
 import { useSelector } from 'react-redux'
 import { logout } from '@/api/session'
 import { dateFormat } from '@/utils/date'
+import { ThemeContext } from 'styled-components'
 import {
   Container,
   ButtonContainer,
@@ -12,7 +13,6 @@ import {
   Text,
   SubText
 } from './style'
-import { ThemeContext } from 'styled-components'
 
 const Profile = ({ navigation, switchTheme }) => {
   const userInfo = useSelector(store => store.userInfoReducer.userInfo)

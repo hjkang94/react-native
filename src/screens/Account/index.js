@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAccounts } from '@/stores/actions/account'
-import { SearchBar } from '@/components'
+import { SearchBar, FixedButton } from '@/components'
 import { dateFormat } from '@/utils/date'
-import { FlatList, ListItem, Text, SubText } from './style'
+import { ThemeContext } from 'styled-components'
+import { FlatList, ListItem, Text, SubText, Switch } from './style'
 
 const header = item => {
   return [
@@ -22,7 +23,7 @@ const header = item => {
     },
     {
       name: 'Active',
-      value: item.active
+      value: item.active ? 'true' : 'false'
     },
     {
       name: 'Created At',
@@ -37,14 +38,19 @@ const header = item => {
 
 const Account = ({ navigation }) => {
   const dispatch = useDispatch()
-  const accounts = useSelector(state => state.accountReducer.accounts)
+  const themeContext = useContext(ThemeContext)
   const [inputText, setInputText] = useState('')
+  const [active, setActive] = useState(true)
+
+  const toggleSwitch = () => setActive(prev => !prev)
 
   useEffect(() => {
     dispatch(fetchAccounts())
   }, [dispatch])
 
-  let filtered = accounts
+  const accounts = useSelector(state => state.accountReducer.accounts)
+  let filtered = accounts.sort((a, b) => b.id.localeCompare(a.id))
+
   if (inputText) {
     filtered = accounts.filter(
       item =>
@@ -52,6 +58,8 @@ const Account = ({ navigation }) => {
         item.name.toLowerCase().includes(inputText.toLowerCase())
     )
   }
+
+  filtered = filtered.filter(account => account.active === active)
 
   const List = () => {
     return (
@@ -75,6 +83,14 @@ const Account = ({ navigation }) => {
   return (
     <>
       <SearchBar inputText={inputText} setInputText={setInputText} />
+      <FixedButton onPress={() => navigation.navigate('AccountAdd')} />
+      <Switch
+        trackColor={{ false: '#767577', true: themeContext.colors.primary }}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={active}
+        marginSize={themeContext.margins.lg}
+      />
       <List />
     </>
   )

@@ -52,9 +52,10 @@ const lightThemeColors = {
   primary: '#8675A9',
   secondary: '#424874',
   lightPrimary: '#DCD6F7',
-  danger: '#C37B89',
+  danger: '#f66',
   background: '#f8f8ff',
-  text: 'black'
+  text: 'black',
+  base: 'white'
 }
 
 const darkThemeColors = {
@@ -64,7 +65,8 @@ const darkThemeColors = {
   lightPrimary: '#202124',
   danger: '#FF4C29',
   background: '#262833',
-  text: '#f8f8ff'
+  text: '#f8f8ff',
+  base: 'black'
 }
 
 // 테마와 관련없이 공통으로 사용되는 변수

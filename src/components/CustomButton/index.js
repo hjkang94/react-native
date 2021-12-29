@@ -18,8 +18,8 @@ CustomButton.defaultProps = {
   title: 'untitled',
   buttonColor: ({ theme }) => theme.colors.primary,
   titleColor: '#fff',
-  width: '100px',
-  height: '60px',
+  width: '80px',
+  height: '40px',
   onPress: () => null
 }
 
