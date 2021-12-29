@@ -45,3 +45,35 @@ export const DetailSubText = styled.Text`
   width: 70%;
   color: ${({ theme }) => theme.colors.text};
 `
+
+export const Switch = styled.Switch`
+  color: ${({ theme }) => theme.colors.text};
+  margin-left: auto;
+  margin-right: ${props => props.marginSize};
+`
+
+export const AddContent = styled.View`
+  width: 300px;
+  margin: ${({ theme }) => theme.margins.base};
+`
+
+export const AddText = styled.Text`
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: ${({ theme }) => theme.fonts.weight.bold};
+  font-size: ${({ theme }) => theme.fonts.size.base};
+`
+
+export const TextInput = styled.TextInput`
+  height: 35px;
+  padding-left: ${({ theme }) => theme.paddings.base};
+  border: 0.5px solid #939393;
+  font-size: ${({ theme }) => theme.fonts.size.base};
+  color: ${({ theme }) => theme.colors.text};
+  margin-top: ${({ theme }) => theme.margins.sm};
+  border-radius: 3px;
+`
+
+export const ButtonContainer = styled.View`
+  margin-top: ${({ theme }) => theme.margins.lg};
+  flex-direction: row;
+`

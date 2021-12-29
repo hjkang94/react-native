@@ -1,4 +1,4 @@
-import { getAccounts } from '@/api/account'
+import { list, get, create } from '@/api/account'
 
 export const fetchAccountsRequest = () => {
   return {
@@ -22,9 +22,39 @@ export const fetchAccountsFail = () => {
 export const fetchAccounts = () => async dispatch => {
   try {
     dispatch(fetchAccountsRequest())
-    const { data } = await getAccounts()
+    const { data } = await list()
     dispatch(fetchAccountsSuccess(data))
   } catch (error) {
     dispatch(fetchAccountsFail())
+  }
+}
+
+export const createAccountRequest = () => {
+  return {
+    type: 'CREATE_ACCOUNT_REQUEST'
+  }
+}
+
+export const createAccountSuccess = account => {
+  return {
+    type: 'CREATE_ACCOUNT_SUCCESS',
+    payload: account
+  }
+}
+
+export const createAccountFail = () => {
+  return {
+    type: 'CREATE_ACCOUNT_FAIL'
+  }
+}
+
+export const createAccount = item => async dispatch => {
+  try {
+    dispatch(createAccountRequest())
+    await create(item)
+    const { data } = await get(item.id)
+    dispatch(createAccountSuccess(data))
+  } catch (error) {
+    dispatch(createAccountFail())
   }
 }

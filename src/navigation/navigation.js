@@ -4,6 +4,7 @@ import {
   Profile,
   Account,
   AccountDetail,
+  AccountAdd,
   Summary,
   Login,
   Web,
@@ -110,6 +111,7 @@ const MainNavigation = props => {
     <NavigationContainer linking={linking} theme={theme}>
       <Stack.Navigator
         screenOptions={{
+          // animationEnabled: false,
           headerShown: false,
           headerBackTitle: '뒤로',
           headerStyle: {
@@ -157,10 +159,18 @@ const MainNavigation = props => {
         <Stack.Screen
           name="AccountDetail"
           options={{
-            title: '상세보기',
+            title: '계정 상세보기',
             headerShown: true
           }}
           component={AccountDetail}
+        />
+        <Stack.Screen
+          name="AccountAdd"
+          options={{
+            title: '계정 추가',
+            headerShown: true
+          }}
+          component={AccountAdd}
         />
       </Stack.Navigator>
     </NavigationContainer>

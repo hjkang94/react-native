@@ -38,7 +38,7 @@ const Home = ({ navigation, account }) => {
         />
         <IconButton
           title={'프로젝트'}
-          icon={'information-circle-sharp'}
+          icon={'flower-sharp'}
           onPress={() => navigation.navigate('Project')}
         />
       </Wrapper>
