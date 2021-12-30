@@ -1,4 +1,4 @@
-import { getSummarys } from '@/api/summary'
+import { list } from '@/api/summary'
 
 export const fetchSummarysRequest = () => {
   return {
@@ -22,7 +22,7 @@ export const fetchSummarysFail = () => {
 export const fetchSummarys = () => async dispatch => {
   try {
     dispatch(fetchSummarysRequest())
-    const { data } = await getSummarys()
+    const { data } = await list()
     dispatch(fetchSummarysSuccess(data))
   } catch (error) {
     dispatch(fetchSummarysFail())

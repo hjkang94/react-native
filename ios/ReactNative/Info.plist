@@ -86,6 +86,13 @@
   </array>
   <key>UIViewControllerBasedStatusBarAppearance</key>
   <false/>
+  <!-- 추가 -->
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Your message to user when the photo library is accessed for the first time</string>
+  <key>NSCameraUsageDescription</key>
+  <string>The camera is accessed for the first time</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>The microphone is accessed for the first time</string>
 </dict>
 </plist>
 
