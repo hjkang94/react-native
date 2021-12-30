@@ -1,4 +1,4 @@
-import { getProjects } from '@/api/project'
+import { list } from '@/api/project'
 
 export const fetchProjectsRequest = () => {
   return {
@@ -22,7 +22,7 @@ export const fetchProjectsFail = () => {
 export const fetchProjects = () => async dispatch => {
   try {
     dispatch(fetchProjectsRequest())
-    const { data } = await getProjects()
+    const { data } = await list()
     dispatch(fetchProjectsSuccess(data))
   } catch (error) {
     dispatch(fetchProjectsFail())

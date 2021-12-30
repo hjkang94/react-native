@@ -1,6 +1,6 @@
 import { callApi } from './common'
 
-export const getProjects = async () => {
+export const list = async () => {
   const projects = await callApi('billing/project')
 
   return {
@@ -10,5 +10,5 @@ export const getProjects = async () => {
 }
 
 module.exports = {
-  getProjects
+  list
 }

@@ -1,6 +1,6 @@
 import { callApi } from './common'
 
-export const getSummarys = async () => {
+export const list = async () => {
   const summarys = await callApi(
     'billing/usage_monthly/015511-0AD477-A67749/202111'
   )
@@ -12,5 +12,5 @@ export const getSummarys = async () => {
 }
 
 module.exports = {
-  getSummarys
+  list
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 export const Container = styled.View`
   flex: 1;
@@ -36,4 +37,20 @@ export const SubText = styled.Text`
   width: 50%;
   margin-left: ${({ theme }) => theme.margins.lg};
   color: ${({ theme }) => theme.colors.text};
+`
+
+export const ImageButton = styled.Pressable`
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: #cccccc;
+  padding: 5px 15px;
+  margin: ${({ theme }) => theme.margins.sm};
+`
+
+export const ImageButtonContainer = styled.View`
+  flex-direction: row;
+`
+
+export const IconContainer = styled(Icon)`
+  color: ${props => props.iconColor};
 `
