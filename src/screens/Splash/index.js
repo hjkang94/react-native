@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
-import { useDispatch } from 'react-redux'
 import { Container, ActivityIndicator, Title } from './style'
 
 const Splash = ({ navigation }) => {
   const [animating, setAnimating] = useState(true)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,7 +17,7 @@ const Splash = ({ navigation }) => {
         }
       })
     }, 2000)
-  }, [dispatch, navigation])
+  }, [navigation])
 
   return (
     <Container>
