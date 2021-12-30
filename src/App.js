@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler'
 import React, { useState } from 'react'
 import MainNavigation from './navigation/navigation'
 import { Provider } from 'react-redux'
@@ -18,7 +17,7 @@ const App = () => {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Container>
-          <MainNavigation switchTheme={switchTheme} theme={theme} />
+          <MainNavigation switchTheme={switchTheme} />
         </Container>
       </ThemeProvider>
     </Provider>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Home,
   Profile,
@@ -15,6 +15,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { ThemeContext } from 'styled-components'
 import { Text } from 'react-native'
 
 const Stack = createStackNavigator()
@@ -49,13 +50,14 @@ function getIconName(name) {
 }
 
 const Tabs = props => {
+  const themeContext = useContext(ThemeContext)
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={params => ({
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: props.theme.colors.lightPrimary
+          backgroundColor: themeContext.colors.lightPrimary
         },
         tabBarIcon: ({ focused, color, size }) => {
           const name = params.route.name
@@ -63,7 +65,7 @@ const Tabs = props => {
             <Icon
               name={getIconName(name)}
               size={20}
-              color={focused ? props.theme.colors.secondary : '#808080'}
+              color={focused ? themeContext.colors.secondary : '#808080'}
             />
           )
         },
@@ -72,7 +74,7 @@ const Tabs = props => {
             <Text
               style={{
                 fontSize: 12,
-                color: focused ? props.theme.colors.secondary : '#808080'
+                color: focused ? themeContext.colors.secondary : '#808080'
               }}>
               {params.route.name}
             </Text>
@@ -100,37 +102,31 @@ const Auth = () => {
 }
 
 const MainNavigation = props => {
+  const themeContext = useContext(ThemeContext)
   const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: props.theme.colors.background
+      background: themeContext.colors.background
     }
   }
   return (
     <NavigationContainer linking={linking} theme={theme}>
       <Stack.Navigator
         screenOptions={{
-          // animationEnabled: false,
           headerShown: false,
           headerBackTitle: '뒤로',
           headerStyle: {
-            backgroundColor: props.theme.colors.lightPrimary
+            backgroundColor: themeContext.colors.lightPrimary
           },
-          headerTintColor: props.theme.colors.secondary
+          headerTintColor: themeContext.colors.secondary
         }}
         initialRouteName="Splash">
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="Web" component={Web} />
         <Stack.Screen name="HomeBase">
-          {subProps => (
-            <Tabs
-              switchTheme={props.switchTheme}
-              theme={props.theme}
-              {...subProps}
-            />
-          )}
+          {subProps => <Tabs switchTheme={props.switchTheme} {...subProps} />}
         </Stack.Screen>
         <Stack.Screen
           name="Account"
