@@ -1,8 +1,6 @@
 import axios from 'axios'
 
 export function callApi(path, params, method) {
-  axios.defaults.withCredentials = true
-
   return new Promise((resolve, reject) => {
     const get = !method || method === 'get'
     const options = {
