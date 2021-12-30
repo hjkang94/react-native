@@ -1,6 +1,5 @@
 const initialState = {
   accounts: [],
-  account: {},
   isLoading: false
 }
 
