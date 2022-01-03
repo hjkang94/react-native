@@ -8,7 +8,7 @@
 
 #### 프로젝트 실행
 ```
-$ cd ReactNative
+$ cd react-native
 $ yarn install
 $ npx react-native start —reset-cache   
 $ cd ios  
